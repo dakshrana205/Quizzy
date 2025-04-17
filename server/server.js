@@ -16,7 +16,7 @@ app.use("/api/exams", examsRoute);
 app.use("/api/reports", resportsRoute);
 const port = process.env.PORT || 4000;
 const path = require("path");
-__dirname = path.resolve();
+//__dirname = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client" , "build")));

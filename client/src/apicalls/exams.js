@@ -1,4 +1,4 @@
-const { default: axiosInstance } = require(".");
+import axiosInstance from "../config/axios";
 
 // add exam
 

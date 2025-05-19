@@ -35,8 +35,7 @@ function AddEditExam() {
         });
       } else {
         response = await addExam({
-          ...values,
-          userId: localStorage.getItem("userId")
+          ...values
         });
       }
       if (response.success) {

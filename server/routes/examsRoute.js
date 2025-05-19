@@ -15,6 +15,8 @@ router.post("/add", authMiddleware, async (req, res) => {
         .send({ message: "Exam already exists", success: false });
     }
     req.body.questions = [];
+    // Set createdBy using either req.user._id or req.userId
+    req.body.createdBy = req.user?._id || req.userId;
     const newExam = new Exam(req.body);
     await newExam.save();
     res.send({

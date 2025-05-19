@@ -38,11 +38,13 @@ function AddEditExam() {
           ...values
         });
       }
-      if (response.success) {
+      if (response && response.success) {
         message.success(response.message);
         navigate("/admin/exams");
-      } else {
+      } else if (response && response.message) {
         message.error(response.message);
+      } else {
+        message.error("An unexpected error occurred");
       }
       dispatch(HideLoading());
     } catch (error) {
@@ -58,10 +60,12 @@ function AddEditExam() {
         examId: params.id,
       });
       dispatch(HideLoading());
-      if (response.success) {
+      if (response && response.success) {
         setExamData(response.data);
-      } else {
+      } else if (response && response.message) {
         message.error(response.message);
+      } else {
+        message.error("Failed to fetch exam data");
       }
     } catch (error) {
       dispatch(HideLoading());
@@ -83,11 +87,13 @@ function AddEditExam() {
         examId : params.id
       });
       dispatch(HideLoading());
-      if (response.success) {
+      if (response && response.success) {
         message.success(response.message);
         getExamData();
-      } else {
+      } else if (response && response.message) {
         message.error(response.message);
+      } else {
+        message.error("Failed to delete question");
       }
     } catch (error) {
       dispatch(HideLoading());
